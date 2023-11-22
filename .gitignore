@@ -4,3 +4,6 @@ thescoreboardapp-e8534-firebase-adminsdk-3xxuw-21a3cc81ee.json
 # node modueles
 frontend/node_modules/
 backend/node_modules/
+
+# BackEndApp 
+backend/BackEndApp.js 
