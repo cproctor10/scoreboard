@@ -1,3 +1,39 @@
+Comprehensive plan for creating a fantasy football and sports betting scoreboard with some exciting features! Here's a quick summary of what you're aiming to achieve:
+
+    Overall Objective:
+        Create a dynamic scoreboard that displays fantasy football and sports betting information.
+        Utilize Firebase Realtime Database for real-time data updates.
+
+    Fantasy Football Features:
+        Populate data from the app onto the scoreboard.
+        Display matchups, teams, scoring, and transactions for fantasy football leagues.
+        Use the user ID to filter and track individual teams across different leagues.
+        Implement real-time updates for player scores and switch the scoreboard accordingly.
+        Allow configuration in the app for the frequency of scoreboard switches.
+
+    User Interface:
+        Explore screen options compatible with Raspberry Pi to display the scoreboard.
+        Keep costs under $200 for the entire setup.
+
+    App Control:
+        Develop an app to control scoreboard settings.
+        Configure the frequency of scoreboard changes.
+        Provide options for switching between Sleeper and ESPN leagues.
+
+    Notifications and Alerts:
+        Display notifications at the top of the scoreboard for trade alerts, transactions, and upset alerts.
+        Implement a visually appealing point update notification when players score.
+
+    Universal Platform:
+        Create a universal platform that integrates data from Sleeper and potentially ESPN.
+        Project matchup and betting data on the scoreboard.
+
+    Future Man Cave Integration:
+        Plan for future integration into a man cave setting for an enhanced viewing experience.
+
+    Cost Considerations:
+        Aim to keep the overall cost of the project under $200.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -68,3 +104,27 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+### Regular Commits:
+
+    As you make changes to your code, regularly commit those changes to your local repository. A good commit captures a meaningful chunk of work. Use descriptive commit messages to explain what changes were made and why. For example:
+
+    git add .
+    git commit -m "Add new feature X"
+
+### Pushing Changes:
+
+    Periodically, you should push your local commits to GitHub to keep your remote repository up-to-date. This is typically done at natural stopping points in your work, like at the end of the day or after completing a feature or fixing a bug:
+
+    git push origin main
+
+    This command pushes your commits on the main branch to GitHub.
+
+### Pull Before Pushing (when switching from machine to machine):
+
+    If you're working in a team or using multiple devices, always pull the latest changes from GitHub before starting your work session and before pushing new changes:
+
+    git pull origin main
+
+This ensures you're working with the most recent version of the code and helps prevent merge conflicts.
