@@ -1,0 +1,168 @@
+/* ScoreboardLayout styles */
+.scoreboard-layout {
+  font-family: 'Arial', sans-serif;
+  background-color: #0e0e10; /* Dark background */
+  color: #ffffff;
+  padding: 20px;
+  display: flex; /* Use flexbox to layout children side by side */
+  flex-direction: column; /* Stack children vertically */
+  align-items: center; /* Center children horizontally */
+  gap: 20px; /* Add space between children */
+}
+
+/* Header and logo adjustments */
+.scoreboard-header {
+  width: 100%; /* Full width to allow content to align properly */
+  display: flex;
+  justify-content: flex-start; /* Align logo to the start */
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+
+.app-logo {
+  height: 360px; /* Increase the size of the logo */
+  width: 360px; /* Maintain aspect ratio */
+  border-radius: 50%; /* Circle shape */
+  object-fit: contain;
+  background: none; /* No background */
+}
+
+/* Matchup info adjustments for side by side team cards */
+.matchup-info {
+  display: flex;
+  justify-content: center; /* Center team cards */
+  width: 100%;
+  position: relative; /* For absolute positioning of points */
+}
+
+/* TeamCard styles */
+.team-card {
+  background-color: #1a1a1c;
+  padding: 15px;
+  border-radius: 8px;
+  width: calc(50% - 40px); /* Adjust width to control card size */
+  margin: 10px 20px; /* Adjust margin for spacing between cards */
+}
+
+/* Team info header */
+.team-name,
+.week-info {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+/* PlayerCard styles */
+.player-card {
+  background-color: #252529;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Player details */
+.player-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.player-name {
+  font-weight: bold;
+}
+
+/* Styles for the points */
+.player-score {
+  font-family: 'Scoreboard', monospace; /* Scoreboard-like font */
+  font-size: 2rem;
+  color: #4caf50; /* Green color for scores */
+}
+
+/* Styles for the Bench section */
+.bench-title,
+.starters-title {
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+/* Styles for the team points - Scoreboard font */
+.scoreboard-font {
+  font-family: 'Scoreboard', monospace; /* Scoreboard-like font */
+  font-size: 4rem;
+  color: #ffffff; /* White color for scores */
+}
+
+/* Styles for the team points container */
+.team-points {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-team-points {
+  position: absolute; /* Absolute position for user points */
+  left: 0; /* Align to the left side */
+  margin-left: 20px; /* Space from the left edge */
+}
+
+.opposing-team-points {
+  position: absolute; /* Absolute position for opposing points */
+  right: 0; /* Align to the right side */
+  margin-right: 20px; /* Space from the right edge */
+}
+
+/* Responsive design adjustments */
+@media (max-width: 768px) {
+  .matchup-info {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .team-card {
+    width: 90%; /* Adjust width for smaller screens */
+    margin-bottom: 10px;
+  }
+
+  .player-card {
+    display: block;
+  }
+
+  .player-details {
+    display: block;
+  }
+
+  .team-points {
+    position: relative; /* Reset position on smaller screens */
+    margin: 0 auto; /* Center the points */
+    order: 1; /* Ensure points are above team cards */
+  }
+
+  .user-team-points,
+  .opposing-team-points {
+    margin-left: 0; /* Remove side margins on smaller screens */
+    margin-right: 0;
+  }
+}
+
+/* Adjust this as needed once you have the actual scoreboard font file */
+@font-face {
+  font-family: 'Scoreboard';
+  src: local('Monospace'), local('Courier New');
+}
+
+/* Mirror layout for opposing team */
+.opposing-team .team-name,
+.opposing-team .week-info,
+.opposing-team .player-section,
+.opposing-team .bench {
+  text-align: right;
+}
+
+.opposing-team .player-card {
+  flex-direction: row-reverse;
+}
+
+/* Add any additional styles you need here */

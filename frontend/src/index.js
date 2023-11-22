@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
+import FrontEndApp from './FrontEndApp'; // Changed from App to FrontEndApp
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <FrontEndApp /> {/* Changed from <App /> to <FrontEndApp /> */}
   </React.StrictMode>
 );
 

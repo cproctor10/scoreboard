@@ -36,3 +36,10 @@
     transform: rotate(360deg);
   }
 }
+
+.app-identification {
+  font-size: 1.5rem;
+  text-align: center;
+  color: #00ff00; /* Bright color for visibility */
+  margin-bottom: 1rem;
+}
