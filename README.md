@@ -105,7 +105,6 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
-
 ### Regular Commits:
 
     As you make changes to your code, regularly commit those changes to your local repository. A good commit captures a meaningful chunk of work. Use descriptive commit messages to explain what changes were made and why. For example:
@@ -118,8 +117,6 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
     Periodically, you should push your local commits to GitHub to keep your remote repository up-to-date. This is typically done at natural stopping points in your work, like at the end of the day or after completing a feature or fixing a bug:
 
     git push origin main
-
-    This command pushes your commits on the main branch to GitHub.
 
 ### Pull Before Pushing (when switching from machine to machine):
 

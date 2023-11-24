@@ -19,6 +19,32 @@
   margin-bottom: 20px;
 }
 
+/* Sub Header and logo adjustments */
+.subapp-header {
+  width: 100%; /* Full width to allow content to align properly */
+  display: flex;
+  justify-content: center; /* Center children horizontally */
+  padding-bottom: 20px;
+  margin-bottom: -20px;
+  align-items: center; /* Center children vertically */
+}
+
+.subapp-header img {
+  max-width: 4%; /* Adjust the max-width as needed to make the image smaller */
+  height: auto; /* Keep the aspect ratio of the image */
+  padding: 3px; /* White padding around the image */
+  background-color: white; /* Background color of the padding, making it white */
+}
+
+/* Sleeper and logo adjustments */
+.sleeper-header {
+  width: 100%; /* Full width to allow content to align properly */
+  display: flex;
+  justify-content: flex-start; /* Align logo to the start */
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+
 .app-logo {
   height: 360px; /* Increase the size of the logo */
   width: 360px; /* Maintain aspect ratio */
@@ -86,13 +112,16 @@
   font-size: 1rem;
   font-weight: bold;
   margin: 10px 0;
+  margin-top: 80px;
 }
 
 /* Styles for the team points - Scoreboard font */
 .scoreboard-font {
   font-family: 'Scoreboard', monospace; /* Scoreboard-like font */
   font-size: 4rem;
-  color: #ffffff; /* White color for scores */
+  color: #4caf50; /* Green color for scores */
+  margin-bottom: 20px;
+  margin-top: 30px;
 }
 
 /* Styles for the team points container */
@@ -159,6 +188,7 @@
 .opposing-team .player-section,
 .opposing-team .bench {
   text-align: right;
+  margin-bottom: 10px;
 }
 
 .opposing-team .player-card {
