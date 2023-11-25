@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
 import './styles.css'; // Make sure this points to the correct CSS file
-import FantasyBetLogo1 from '/Users/charlpro/scoreboard/frontend/src/Images/FantasyBetLogo1.png'; // Update the path as needed
-import sleeperfantasy from '/Users/charlpro/scoreboard/frontend/src/Images/sleeperfantasy.png';
+import FantasyBetLogo1 from './Images/FantasyBetLogo1.png'; // Update the path as needed
+import sleeperfantasy from './Images/sleeperfantasy.png';
 import SleeperService from './services/sleeper-services/sleeper.services';
 import PlayerServices from './services/firebase-services/player.services';
 
 const ScoreboardLayout = () => {
   const [username, setUser] = useState(''); // State variable for user
+  const [playerId, setPlayer] = useState(''); // State variable for user
+
   const sleeperService = new SleeperService();
-  const playerServices = new PlayerServices();
+  const playerService = new PlayerServices();
+  
   let userId;
 
   let leagues;
@@ -17,7 +20,7 @@ const ScoreboardLayout = () => {
   let rosters;
   let ownerRoster;
 
-  let playerInfo;
+  let playerData;
 
   const getUser = async () => {
     try {
@@ -75,10 +78,26 @@ const ScoreboardLayout = () => {
 
   const getRosters = async () => {
     try {
-      rosters = await sleeperService.getRosterInLeagueData(currentLeague.league_id);
+      rosters = await playerService.createAllPlayersIndex();
       console.log(`Roster: ${JSON.stringify(rosters)}`);
     } catch (error) {
       console.error("Error in getRoster:", error.message); // Log any errors
+    }
+  }
+
+  const updatePlayers = async () => {
+    try {
+      await playerService.createAllPlayersIndex();
+    } catch (error) {
+      console.error("Error in getRoster:", error.message); // Log any errors
+    }
+  }
+
+  const getPlayerById = async () => {
+    try{
+      playerData = playerService.getPlayerBySleeperId(playerId);
+    } catch (error){
+      console.log("Error in getPlayerById: ", error.message);
     }
   }
 
@@ -111,6 +130,15 @@ const ScoreboardLayout = () => {
           placeholder='Enter Username'
         />
         <button onClick={getUser}>Get User</button>
+        <button onClick={updatePlayers}>Update Players</button>
+        <br />
+        <input
+          value={playerId}
+          onChange={(e) => setPlayer(e.target.value)}
+          placeholder='Enter Player Id'
+        />
+        <button onClick={getPlayerById}>Get Player</button>
+
       </div>
       <div className="week-info">Week #</div>
       <div className="matchup-info">
