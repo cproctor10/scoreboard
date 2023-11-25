@@ -20,7 +20,7 @@ const ScoreboardLayout = () => {
   let rosters;
   let ownerRoster;
 
-  let playerData;
+  let [playerData,setPlayerData] = useState(null);
 
   const getUser = async () => {
     try {
@@ -87,7 +87,7 @@ const ScoreboardLayout = () => {
 
   const updatePlayers = async () => {
     try {
-      await playerService.createAllPlayersIndex();
+      await playerService.createNflPlayers();
     } catch (error) {
       console.error("Error in getRoster:", error.message); // Log any errors
     }
@@ -95,7 +95,7 @@ const ScoreboardLayout = () => {
 
   const getPlayerById = async () => {
     try{
-      playerData = playerService.getPlayerBySleeperId(playerId);
+      setPlayerData(await playerService.getPlayerBySleeperId(playerId));
     } catch (error){
       console.log("Error in getPlayerById: ", error.message);
     }
@@ -104,7 +104,7 @@ const ScoreboardLayout = () => {
   // Function to render player cards
   const renderPlayerCards = (players, bench = false) => players.map((player, index) => (
     <div className={`player-card ${bench ? 'bench' : ''}`} key={index}>
-      <span className="player-name">{player.name}</span>
+      <span className="player-name">{playerData?.full_name}</span>
       <span className="player-position">{player.position}</span>
       <span className="player-team">{player.team}</span>
       <span className="player-score">{player.points}</span>

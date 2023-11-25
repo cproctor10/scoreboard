@@ -1,5 +1,5 @@
 import { db } from '../../firebase';
-import { ref, set, onValue, query } from "firebase/database";
+import { ref, set, onValue, query, remove, get, child } from "firebase/database";
 import { onSnapshot, collection, where } from 'firebase/firestore';
 
 // PlayerServices class to handle player data operations
@@ -30,51 +30,55 @@ export default class PlayerServices {
 
     //************************  THIS METHOD STILL NEEDS WORK   ************************/
     // Method to fetch player data by Sleeper ID (placeholder)
+// Method to fetch player data by Sleeper ID (placeholder)
     async getPlayerBySleeperId(playerId) {
-        var today = new Date();
-        const datePath = `${today.getFullYear()}_${today.getMonth() + 1}_${today.getDate()}`; // Month is 0-indexed
+      try {
+          // Reference to the player data using playerId
+          const playerRef = ref(db, `AllNflPlayers/${playerId}`);
 
-        // Implementation for fetching player by Sleeper ID
-        const playerDataRef = ref(db, `allNflPlayers/${datePath}`);
-        let playerData;
-        await onValue(playerDataRef, (snapshot) => {
-            playerData = snapshot.val();
-            console.log(playerData);
-        });
-        debugger;
-
-        const collectionQuery = query(collection(db, `allNflPlayers/${datePath}`), where(playerId, '==', playerId))
-        const unsub = onSnapshot(playerDataRef, (snapshot) => { 
-            snapshot.docs.forEach((doc) => {
-                 console.log(doc.data()); 
-                });
-            }); 
-
-        console.log(`Player Data: ${playerData}`);
-        return playerData;
+          // Fetch the player data
+          const snapshot = await get(playerRef);
+          if (snapshot.exists()) {
+              const playerData = snapshot.val();
+              console.log(`Player Data: `, playerData);
+              return playerData;
+          } else {
+              console.log("No player data available for ID:", playerId);
+              return null;
+          }
+      } catch (error) {
+          console.error("Error fetching player data:", error);
+          return null;
+      }
     }
 
-    // Method to fetch and save all NFL players to Firebase, called once a day
-    async createAllPlayersIndex() {
-        try {
-            // Fetch current NFL players data
-            const playersData = await this.getAllPlayers();
 
-            // Format today's date
-            var today = new Date();
-            const datePath = `${today.getFullYear()}_${today.getMonth() + 1}_${today.getDate()}`; // Month is 0-indexed
+    // Method to add all NFL players to Firebase, called once a day by player_id
+    async createNflPlayers() {
+      try {
+          // Fetch current NFL players data
+          const playersData = await this.getAllPlayers();
+          // const allTableRef = ref(db, "allNflPlayers");
+          // remove(allTableRef).then(() =>{});
 
-            // Reference to save players in Firebase Realtime Database
-            const playersRef = ref(db, `allNflPlayers/${datePath}`);
+          // Reference to save players in Firebase Realtime Database
+          const playersRef = ref(db, `AllNflPlayers`);
 
-            // Save players data to Firebase, overwriting existing data
-            set(playersRef, playersData);
+          playersData.forEach(player => {
+              // Corrected line: Concatenate the player ID in the path
+              const playerRef = ref(db, `AllNflPlayers/${player.player_id}`);
+              set(playerRef, player);
+          });
 
-            debugger;
-            console.log('NFL players data updated successfully.');
-
-        } catch (error) {
-            console.error(`Error in createAllSleeperPlayers: ${error.message}`);
-        }
+      } catch (error) {
+          console.error(`Error in create AllNflPlayers: ${error.message}`);
+      }
     }
 }
+    // // Delete unneeded firebase tables
+    // async createNflPlayers() {
+    //   try {
+    //       // Fetch current NFL players data
+    //       const playersData = await this.getAllPlayers();
+    //       // const allTableRef = ref(db, "allNflPlayers");
+    //       // remove(allTableRef).then(() =>{});
